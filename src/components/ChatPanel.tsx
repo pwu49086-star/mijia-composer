@@ -50,10 +50,10 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       initial={{ x: 16, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.08 }}
-      className="flex w-80 shrink-0 flex-col border-l border-white/5 glass"
+      className="flex w-80 shrink-0 flex-col border-l border-border bg-card"
     >
       {/* Header */}
-      <div className="flex items-center gap-2.5 border-b border-white/5 px-4 py-3">
+      <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
         <div className={cn("flex h-8 w-8 items-center justify-center rounded-lg shadow-md",
           aiMode === "claude" ? "bg-purple-500/20 shadow-purple-500/20" : "bg-[var(--accent)]/20 shadow-[var(--accent)]/20"
         )}>
@@ -71,7 +71,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
         </div>
         <button onClick={() => setShowKeyInput(!showKeyInput)}
           className={cn("flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-all",
-            showKeyInput ? "bg-purple-500/10 text-purple-400" : "text-muted-foreground/40 hover:text-muted-foreground hover:bg-white/5"
+            showKeyInput ? "bg-purple-500/10 text-purple-400" : "text-muted-foreground/40 hover:text-muted-foreground hover:bg-muted"
           )}
           title="API 设置"><Settings className="h-3.5 w-3.5" /></button>
       </div>
@@ -80,12 +80,12 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       <AnimatePresence>
         {showKeyInput && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
-            className="overflow-hidden border-b border-white/5">
+            className="overflow-hidden border-b border-border">
             <div className="px-4 py-3 space-y-2">
               <div className="flex items-center gap-1.5"><Brain className="h-3 w-3 text-purple-400" /><span className="text-[10px] font-semibold text-muted-foreground">Anthropic API Key</span></div>
               <div className="flex gap-1.5">
                 <Input type="password" value={keyDraft} onChange={(e) => setKeyDraft(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSaveKey()}
-                  placeholder="sk-ant-api03-..." className="h-7 flex-1 rounded-md border-white/10 bg-white/5 text-[10px] placeholder:text-muted-foreground/30 focus-visible:ring-purple-500/20" />
+                  placeholder="sk-ant-api03-..." className="h-7 flex-1 rounded-md border-border bg-muted text-[10px] placeholder:text-muted-foreground/30 focus-visible:ring-purple-500/20" />
                 <button onClick={handleSaveKey} className="flex h-7 items-center rounded-md bg-purple-500/10 px-2.5 text-[10px] font-medium text-purple-400 hover:bg-purple-500/20 active:scale-95">保存</button>
                 {apiKey && <button onClick={handleClearKey} className="flex h-7 w-7 items-center justify-center rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 active:scale-95" title="清除"><X className="h-3 w-3" /></button>}
               </div>
@@ -106,8 +106,8 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
                 transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 className={cn("max-w-[90%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed",
                   m.role === "ai"
-                    ? "self-start rounded-bl-sm border border-white/5 bg-white/5 text-foreground/80"
-                    : "self-end rounded-br-sm border border-cyan-500/15 bg-cyan-500/10 text-[var(--accent)]"
+                    ? "self-start rounded-bl-sm border border-border bg-muted text-foreground/80"
+                    : "self-end rounded-br-sm border border-[var(--accent)]/15 bg-[var(--accent)]/10 text-[var(--accent)]"
                 )}
               >
                 <div className="whitespace-pre-wrap">{m.text}</div>
@@ -122,7 +122,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
             ))}
             {isTyping && (
               <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                className="self-start rounded-xl rounded-bl-sm border border-white/5 bg-white/5 px-3 py-2"><TypingDots /></motion.div>
+                className="self-start rounded-xl rounded-bl-sm border border-border bg-muted px-3 py-2"><TypingDots /></motion.div>
             )}
           </AnimatePresence>
         </div>
@@ -132,20 +132,20 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       <div className="flex flex-wrap gap-1.5 px-3 pb-2">
         {QUICK.map((q) => (
           <button key={q} onClick={() => onSend(q)}
-            className="rounded-md border border-white/5 bg-white/5 px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-cyan-500/20 hover:text-[var(--accent)] hover:bg-cyan-500/5"
+            className="rounded-md border border-border bg-muted px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-[var(--accent)]/20 hover:text-[var(--accent)] hover:bg-[var(--accent)]/5"
           >{q}</button>
         ))}
       </div>
 
       {/* Input */}
-      <div className="border-t border-white/5 px-3 py-3">
+      <div className="border-t border-border px-3 py-3">
         <div className="flex gap-2">
           <Input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder={aiMode === "claude" ? "问 Claude..." : "问我任何问题..."}
-            className="h-9 flex-1 rounded-lg border-white/10 bg-white/5 text-xs placeholder:text-muted-foreground/30 focus-visible:ring-cyan-500/20" />
+            className="h-9 flex-1 rounded-lg border-border bg-muted text-xs placeholder:text-muted-foreground/30 focus-visible:ring-[var(--accent)]/20" />
           <button onClick={handleSend} disabled={isTyping}
             className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white shadow-md transition-all hover:shadow-lg active:scale-95",
-              isTyping ? "bg-white/10 opacity-50 cursor-not-allowed" : "bg-[var(--accent)] shadow-[var(--accent)]/30 hover:shadow-[var(--accent)]/50"
+              isTyping ? "bg-muted opacity-50 cursor-not-allowed" : "bg-[var(--accent)] shadow-[var(--accent)]/30 hover:shadow-[var(--accent)]/50"
             )}><Send className="h-4 w-4" /></button>
         </div>
       </div>

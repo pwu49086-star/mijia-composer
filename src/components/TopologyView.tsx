@@ -29,7 +29,7 @@ const protoDot: Record<string, string> = {
 };
 
 const roomTint: Record<string, { bg: string; border: string; shadow: string }> = {
-  "客厅": { bg: "from-cyan-950/50 to-cyan-900/20", border: "border-cyan-500/20", shadow: "shadow-[0_0_20px_rgba(6,182,212,0.08)]" },
+  "客厅": { bg: "from-cyan-950/50 to-cyan-900/20", border: "border-[var(--accent)]/20", shadow: "shadow-[0_0_20px_rgba(6,182,212,0.08)]" },
   "卧室": { bg: "from-violet-950/40 to-violet-900/15", border: "border-violet-500/20", shadow: "shadow-[0_0_20px_rgba(139,92,246,0.08)]" },
   "门口": { bg: "from-amber-950/40 to-amber-900/15", border: "border-amber-500/20", shadow: "shadow-[0_0_20px_rgba(245,158,11,0.08)]" },
   "全屋": { bg: "from-slate-900/40 to-slate-800/20", border: "border-slate-500/20", shadow: "shadow-[0_0_20px_rgba(148,163,184,0.06)]" },
@@ -47,7 +47,7 @@ export function TopologyView({ rooms, needsGateway, totalDevices, totalPrice, sc
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="shrink-0 border-b border-border/30 glass px-5 py-2.5"
+          className="shrink-0 border-b border-border/30 bg-card px-5 py-2.5"
         >
           <div className="flex items-center gap-1">
             <Dash icon={Layers} label="空间" val={`${rooms.length}间`} />
@@ -146,8 +146,8 @@ function HubPill({ icon: Icon, label, accent }: { icon: typeof Router; label: st
   return (
     <div className={cn(
       "flex items-center gap-2 rounded-lg border px-3 py-2 text-[12px] font-semibold",
-      accent ? "border-cyan-500/20 bg-cyan-500/10 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
-        : "border-border/40 glass text-foreground"
+      accent ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] shadow-[0_0_12px_rgba(6,182,212,0.15)]"
+        : "border-border/40 bg-card text-foreground"
     )}>
       <Icon className="h-4 w-4" />
       {label}
@@ -169,7 +169,7 @@ function IsoRoom({ room, idx, needsGw, wide }: { room: Room; idx: number; needsG
         "group overflow-hidden rounded-2xl border transition-all duration-300",
         t.border, t.shadow,
         open ? "bg-gradient-to-b " + t.bg : "bg-gradient-to-b " + t.bg,
-        "hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] backdrop-blur-sm",
+        "hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] ",
         wide && "col-span-full"
       )}
     >
@@ -177,7 +177,7 @@ function IsoRoom({ room, idx, needsGw, wide }: { room: Room; idx: number; needsG
       <button type="button" onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-3 px-4 py-3.5"
       >
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/5 shadow-sm group-hover:border-cyan-500/20 transition-all">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted border border-border shadow-sm group-hover:border-[var(--accent)]/20 transition-all">
           <Icon className="h-5 w-5 text-[var(--accent)]" />
         </div>
         <div className="flex-1 text-left">
@@ -224,11 +224,11 @@ function DevBlock({ device, delay }: { device: Device; delay: number }) {
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.2 }}
-      className="group/dev flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition-all duration-300 hover:border-cyan-500/20 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(6,182,212,0.12)] hover:scale-[1.02]"
+      className="group/dev flex items-center gap-3 rounded-xl border border-border bg-muted p-3 transition-all duration-300 hover:border-[var(--accent)]/20 hover:bg-muted hover:shadow-[0_0_16px_rgba(6,182,212,0.12)] hover:scale-[1.02]"
     >
       {/* Icon with proto ring */}
       <div className="relative shrink-0">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/5 group-hover/dev:border-cyan-500/15 transition-colors">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted border border-border group-hover/dev:border-[var(--accent)]/15 transition-colors">
           {Icon && <Icon className="h-5 w-5 text-muted-foreground group-hover/dev:text-[var(--accent)] transition-colors" />}
         </div>
         <span className={cn("absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-black/20", proto)} />
@@ -257,7 +257,7 @@ function EmptyState() {
   return (
     <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
       className="flex h-full flex-col items-center justify-center gap-5">
-      <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl border-2 border-dashed border-white/5 glass">
+      <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl border-2 border-dashed border-border glass">
         <Home className="h-10 w-10 text-muted-foreground/20" />
         <Sparkles className="absolute -top-1 -right-1 h-5 w-5 text-[var(--accent)] animate-pulse" />
       </div>

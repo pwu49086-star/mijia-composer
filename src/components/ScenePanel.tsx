@@ -26,9 +26,9 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
       initial={{ x: -16, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 280, damping: 28, delay: 0.03 }}
-      className="flex w-72 shrink-0 flex-col border-r border-white/5 glass"
+      className="flex w-72 shrink-0 flex-col border-r border-border bg-card"
     >
-      <div className="border-b border-white/5 px-4 py-3 flex items-center justify-between">
+      <div className="border-b border-border px-4 py-3 flex items-center justify-between">
         <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">场景配置</span>
         <button
           type="button" onClick={selAll}
@@ -61,13 +61,13 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   className={cn(
                     "group flex items-center gap-2.5 rounded-xl border px-2.5 py-2 text-left transition-all duration-300",
                     active
-                      ? "border-cyan-500/20 bg-cyan-500/10 shadow-[0_0_12px_rgba(6,182,212,0.08)]"
-                      : "border-transparent hover:border-white/5 hover:bg-white/5"
+                      ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 shadow-[0_0_12px_rgba(6,182,212,0.08)]"
+                      : "border-transparent hover:border-border hover:bg-muted"
                   )}
                 >
                   <div className={cn(
                     "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all",
-                    active ? "border-cyan-500/20 bg-cyan-500/10" : "border-white/5 bg-white/5"
+                    active ? "border-[var(--accent)]/20 bg-[var(--accent)]/10" : "border-border bg-muted"
                   )}>
                     {Icon && <Icon className={cn("h-3.5 w-3.5", active ? "text-[var(--accent)]" : "text-muted-foreground")} />}
                   </div>
@@ -78,7 +78,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   <span className={cn("shrink-0 font-mono text-[11px] font-bold", active ? "text-[var(--accent)]" : "text-muted-foreground")}>¥{getScenePrice(s.id)}</span>
                   <div className={cn(
                     "flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all",
-                    active ? "border-cyan-500 bg-cyan-500 shadow-[0_0_6px_rgba(6,182,212,0.3)]" : "border-white/10"
+                    active ? "border-[var(--accent)] bg-[var(--accent)] shadow-[0_0_6px_rgba(6,182,212,0.3)]" : "border-border"
                   )}>
                     {active && <Check className="h-2.5 w-2.5 text-white" />}
                   </div>
@@ -102,8 +102,8 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-[11px] font-medium transition-all duration-300",
                   family.includes(o.v)
-                    ? "border-cyan-500/20 bg-cyan-500/10 text-[var(--accent)] shadow-[0_0_8px_rgba(6,182,212,0.06)]"
-                    : "border-white/5 bg-white/5 text-muted-foreground hover:border-white/10 hover:text-foreground"
+                    ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] shadow-[0_0_8px_rgba(6,182,212,0.06)]"
+                    : "border-border bg-muted text-muted-foreground hover:border-border hover:text-foreground"
                 )}
               >{o.t}</button>
             ))}
@@ -122,8 +122,8 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                 className={cn(
                   "flex items-center justify-between rounded-lg border px-3 py-2 text-left transition-all duration-300",
                   reno === o.v
-                    ? "border-cyan-500/20 bg-cyan-500/10 shadow-[0_0_8px_rgba(6,182,212,0.06)]"
-                    : "border-white/5 hover:bg-white/5"
+                    ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 shadow-[0_0_8px_rgba(6,182,212,0.06)]"
+                    : "border-border hover:bg-muted"
                 )}
               >
                 <span className={cn("text-[11px] font-semibold", reno === o.v ? "text-[var(--accent)]" : "text-foreground")}>{o.t}</span>

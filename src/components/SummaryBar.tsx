@@ -15,7 +15,7 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.2 }}
-      className="flex shrink-0 items-center justify-between border-t border-white/5 glass-strong px-4 py-2.5"
+      className="flex shrink-0 items-center justify-between border-t border-border bg-card px-4 py-2.5"
     >
       <div className="flex gap-5">
         <Stat value={totalDevices} label="设备" />
@@ -23,9 +23,9 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
         <Stat value={sceneCount} label="场景" />
       </div>
       <div className="flex items-center gap-2">
-        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-white/10 bg-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground" onClick={onBreakdown}>
+        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-border bg-muted text-muted-foreground hover:border-border hover:text-foreground" onClick={onBreakdown}>
           <FileText className="h-3.5 w-3.5" />明细</Button>
-        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-white/10 bg-white/5 text-muted-foreground hover:border-red-500/20 hover:text-red-400" onClick={onClear}>
+        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-border bg-muted text-muted-foreground hover:border-red-500/20 hover:text-red-400" onClick={onClear}>
           <Trash2 className="h-3.5 w-3.5" />清空</Button>
         <Button size="sm" className="h-8 gap-1.5 bg-[var(--accent)] text-xs shadow-md shadow-[var(--accent)]/30 hover:shadow-[var(--accent)]/50" onClick={onExport}>
           查看方案<ArrowRight className="h-3.5 w-3.5" /></Button>
