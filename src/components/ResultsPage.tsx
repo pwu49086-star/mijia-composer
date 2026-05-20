@@ -159,7 +159,7 @@ function RoomRow({ room, index }: { room: Room; index: number }) {
               {room.devices.map((d) => (
                 <div key={d.id} className="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-muted/20 transition-colors group">
                   <div className="h-7 w-7 flex items-center justify-center rounded-md bg-muted/30 group-hover:bg-indigo-50 transition-colors">
-                    {(IconMap[d.icon] || Zap) && (() => { const I = IconMap[d.icon] || Zap; return <I className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-indigo-500 transition-colors" />; })()}
+                    {(() => { const I = IconMap[d.icon] || Zap; return <I className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-indigo-500 transition-colors" />; })()}
                   </div>
                   <span className="flex-1 text-[13px] font-medium truncate">{d.name}</span>
                   <span className={cn("text-[10px] font-semibold rounded px-1.5 py-px",
