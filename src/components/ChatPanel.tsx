@@ -107,7 +107,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
                 className={cn("max-w-[90%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed",
                   m.role === "ai"
                     ? "self-start rounded-bl-sm border border-border bg-muted text-foreground/80"
-                    : "self-end rounded-br-sm border border-[var(--accent)]/15 bg-[var(--accent)]/10 text-[var(--accent)]"
+                    : "self-end rounded-br-sm border border-orange-500/15 bg-orange-500/5 text-[var(--accent)]"
                 )}
               >
                 <div className="whitespace-pre-wrap">{m.text}</div>
@@ -132,7 +132,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       <div className="flex flex-wrap gap-1.5 px-3 pb-2">
         {QUICK.map((q) => (
           <button key={q} onClick={() => onSend(q)}
-            className="rounded-md border border-border bg-muted px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-[var(--accent)]/20 hover:text-[var(--accent)] hover:bg-[var(--accent)]/5"
+            className="rounded-md border border-border bg-muted px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-orange-500/20 hover:text-orange-400"
           >{q}</button>
         ))}
       </div>

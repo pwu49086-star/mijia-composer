@@ -146,7 +146,7 @@ function HubPill({ icon: Icon, label, accent }: { icon: typeof Router; label: st
   return (
     <div className={cn(
       "flex items-center gap-2 rounded-lg border px-3 py-2 text-[12px] font-semibold",
-      accent ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] shadow-[0_0_12px_rgba(6,182,212,0.15)]"
+      accent ? "border-orange-500/20 bg-orange-500/5 text-orange-400"
         : "border-border/40 bg-card text-foreground"
     )}>
       <Icon className="h-4 w-4" />
@@ -169,7 +169,7 @@ function IsoRoom({ room, idx, needsGw, wide }: { room: Room; idx: number; needsG
         "group overflow-hidden rounded-2xl border transition-all duration-300",
         t.border, t.shadow,
         open ? "bg-gradient-to-b " + t.bg : "bg-gradient-to-b " + t.bg,
-        "hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] ",
+        "hover:border-orange-500/20 ",
         wide && "col-span-full"
       )}
     >

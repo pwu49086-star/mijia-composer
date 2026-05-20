@@ -34,7 +34,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
           type="button" onClick={selAll}
           className={cn(
             "text-[10px] font-medium transition-all px-2 py-0.5 rounded-md",
-            allSelected ? "bg-[var(--accent)]/10 text-[var(--accent)]" : "text-muted-foreground hover:text-[var(--accent)]"
+            allSelected ? "bg-[var(--accent)]/10 text-orange-400" : "text-muted-foreground hover:text-orange-400"
           )}
         >
           {allSelected ? "已全选" : "全选"}
@@ -61,7 +61,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   className={cn(
                     "group flex items-center gap-2.5 rounded-xl border px-2.5 py-2 text-left transition-all duration-300",
                     active
-                      ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 shadow-[0_0_12px_rgba(6,182,212,0.08)]"
+                      ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 "
                       : "border-transparent hover:border-border hover:bg-muted"
                   )}
                 >
@@ -69,13 +69,13 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                     "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all",
                     active ? "border-[var(--accent)]/20 bg-[var(--accent)]/10" : "border-border bg-muted"
                   )}>
-                    {Icon && <Icon className={cn("h-3.5 w-3.5", active ? "text-[var(--accent)]" : "text-muted-foreground")} />}
+                    {Icon && <Icon className={cn("h-3.5 w-3.5", active ? "text-orange-400" : "text-muted-foreground")} />}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className={cn("text-[11px] font-semibold", active ? "text-[var(--accent)]" : "text-foreground")}>{s.name}</div>
+                    <div className={cn("text-[11px] font-semibold", active ? "text-orange-400" : "text-foreground")}>{s.name}</div>
                     <div className="truncate text-[9px] text-muted-foreground/60">{s.items}</div>
                   </div>
-                  <span className={cn("shrink-0 font-mono text-[11px] font-bold", active ? "text-[var(--accent)]" : "text-muted-foreground")}>¥{getScenePrice(s.id)}</span>
+                  <span className={cn("shrink-0 font-mono text-[11px] font-bold", active ? "text-orange-400" : "text-muted-foreground")}>¥{getScenePrice(s.id)}</span>
                   <div className={cn(
                     "flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all",
                     active ? "border-[var(--accent)] bg-[var(--accent)] shadow-[0_0_6px_rgba(6,182,212,0.3)]" : "border-border"
@@ -102,7 +102,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-[11px] font-medium transition-all duration-300",
                   family.includes(o.v)
-                    ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] shadow-[0_0_8px_rgba(6,182,212,0.06)]"
+                    ? "border-[var(--accent)]/20 bg-[var(--accent)]/10 text-orange-400 shadow-[0_0_8px_rgba(6,182,212,0.06)]"
                     : "border-border bg-muted text-muted-foreground hover:border-border hover:text-foreground"
                 )}
               >{o.t}</button>
@@ -126,8 +126,8 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                     : "border-border hover:bg-muted"
                 )}
               >
-                <span className={cn("text-[11px] font-semibold", reno === o.v ? "text-[var(--accent)]" : "text-foreground")}>{o.t}</span>
-                {o.tip && <span className={cn("text-[9px]", reno === o.v ? "text-[var(--accent)]/60" : "text-muted-foreground")}>{o.tip}</span>}
+                <span className={cn("text-[11px] font-semibold", reno === o.v ? "text-orange-400" : "text-foreground")}>{o.t}</span>
+                {o.tip && <span className={cn("text-[9px]", reno === o.v ? "text-orange-400/60" : "text-muted-foreground")}>{o.tip}</span>}
               </button>
             ))}
           </div>
