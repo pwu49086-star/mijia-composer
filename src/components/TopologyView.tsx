@@ -41,7 +41,7 @@ export function TopologyView({ rooms, needsGateway, totalDevices, totalPrice, sc
   const wholeRooms = rooms.filter(r => r.name === "全屋");
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden bg-transparent">
+    <div className="flex flex-1 flex-col overflow-hidden bg-background">
       {/* Data Dashboard */}
       {rooms.length > 0 && (
         <motion.div
@@ -57,7 +57,7 @@ export function TopologyView({ rooms, needsGateway, totalDevices, totalPrice, sc
             <DashSep /><Dash icon={ShieldCheck} label="兼容" val="通过" hi />
             <div className="ml-auto flex items-baseline gap-2">
               <span className="text-[9px] text-muted-foreground">方案总价</span>
-              <span className="font-mono text-xl font-extrabold text-[var(--accent)] num-glow">¥{totalPrice.toLocaleString()}</span>
+              <span className="font-mono text-xl font-extrabold text-[var(--accent)]">¥{totalPrice.toLocaleString()}</span>
             </div>
           </div>
         </motion.div>
@@ -146,7 +146,7 @@ function HubPill({ icon: Icon, label, accent }: { icon: typeof Router; label: st
   return (
     <div className={cn(
       "flex items-center gap-2 rounded-lg border px-3 py-2 text-[12px] font-semibold",
-      accent ? "border-orange-500/20 bg-orange-500/5 text-orange-400"
+      accent ? "border-orange-100 bg-orange-50 text-orange-500"
         : "border-border/40 bg-card text-foreground"
     )}>
       <Icon className="h-4 w-4" />
@@ -166,10 +166,9 @@ function IsoRoom({ room, idx, needsGw, wide }: { room: Room; idx: number; needsG
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ type: "spring", stiffness: 180, damping: 24, delay: idx * 0.06 }}
       className={cn(
-        "group overflow-hidden rounded-2xl border transition-all duration-300",
-        t.border, t.shadow,
-        open ? "bg-gradient-to-b " + t.bg : "bg-gradient-to-b " + t.bg,
-        "hover:border-orange-500/20 ",
+        "group overflow-hidden rounded-2xl border transition-all duration-300 bg-card shadow-sm",
+        t.border,
+        "hover:border-orange-200 ",
         wide && "col-span-full"
       )}
     >

@@ -14,10 +14,10 @@ export function Topbar({ onExport }: { onExport: () => void }) {
       transition={{ type: "spring", stiffness: 280, damping: 28 }}
       className="relative z-10 flex h-14 shrink-0 items-center justify-between border-b border-border bg-card px-5"
     >
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6700]/15 to-transparent" />
 
       <div className="flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500 text-xs font-extrabold text-white ">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ff6700] text-xs font-extrabold text-white ">
           Mi
         </div>
         <span className="text-sm font-bold tracking-tight">米家搭配向导</span>
@@ -35,7 +35,7 @@ export function Topbar({ onExport }: { onExport: () => void }) {
         <Badge variant="secondary" className="gap-1 text-[10px] bg-muted border-border">
           <span className="font-mono font-semibold">3</span> 协议
         </Badge>
-        <Button size="sm" className="ml-1 h-8 gap-1.5 bg-orange-500 text-xs shadow-md shadow-orange-500/20 hover:shadow-orange-500/30" onClick={onExport}>
+        <Button size="sm" className="ml-1 h-8 gap-1.5 bg-[#ff6700] text-xs shadow-md " onClick={onExport}>
           查看方案<ArrowRight className="h-3.5 w-3.5" />
         </Button>
       </div>

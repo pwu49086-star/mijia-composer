@@ -27,7 +27,7 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
           <FileText className="h-3.5 w-3.5" />明细</Button>
         <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-border bg-muted text-muted-foreground hover:border-red-500/20 hover:text-red-400" onClick={onClear}>
           <Trash2 className="h-3.5 w-3.5" />清空</Button>
-        <Button size="sm" className="h-8 gap-1.5 bg-orange-500 text-xs shadow-md shadow-orange-500/20 hover:shadow-orange-500/30" onClick={onExport}>
+        <Button size="sm" className="h-8 gap-1.5 bg-[#ff6700] text-xs shadow-md " onClick={onExport}>
           查看方案<ArrowRight className="h-3.5 w-3.5" /></Button>
       </div>
     </motion.div>
@@ -37,7 +37,7 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
 function Stat({ value, label, glow }: { value: string | number; label: string; glow?: boolean }) {
   return (
     <div className="relative text-center">
-      <div className={glow ? "font-mono text-lg font-bold num-glow text-orange-400" : "font-mono text-lg font-bold"}>{value}</div>
+      <div className={glow ? "font-mono text-lg font-bold  text-[#ff6700]" : "font-mono text-lg font-bold"}>{value}</div>
       <div className="mt-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">{label}</div>
     </div>
   );

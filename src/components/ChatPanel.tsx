@@ -23,7 +23,7 @@ function TypingDots() {
   return (
     <div className="flex items-center gap-1 px-1 py-1">
       {[0, 1, 2].map((i) => (
-        <motion.span key={i} className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]/60"
+        <motion.span key={i} className="h-1.5 w-1.5 rounded-full bg-orange-500/60"
           animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 0.15, delay: i * 0.15, ease: "easeInOut" }}
         />
@@ -55,23 +55,23 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
         <div className={cn("flex h-8 w-8 items-center justify-center rounded-lg shadow-md",
-          aiMode === "claude" ? "bg-purple-500/20 shadow-purple-500/20" : "bg-[var(--accent)]/20 shadow-[var(--accent)]/20"
+          aiMode === "claude" ? "bg-purple-100 shadow-purple-200/20" : "bg-orange-50"
         )}>
-          {aiMode === "claude" ? <Sparkles className="h-4 w-4 text-purple-400" /> : <MessageSquare className="h-4 w-4 text-[var(--accent)]" />}
+          {aiMode === "claude" ? <Sparkles className="h-4 w-4 text-purple-500" /> : <MessageSquare className="h-4 w-4 text-orange-500" />}
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-sm font-semibold">米家助手</div>
           <div className="flex items-center gap-1.5 text-[9px] font-medium">
             {aiMode === "claude" ? (
-              <><span className="h-1.5 w-1.5 rounded-full bg-purple-400 shadow-[0_0_4px_rgba(168,85,247,0.4)]" /><span className="text-purple-400">AI: Claude</span></>
+              <><span className="h-1.5 w-1.5 rounded-full bg-purple-500 shadow-[0_0_4px_rgba(168,85,247,0.4)]" /><span className="text-purple-500">AI: Claude</span></>
             ) : (
-              <><span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_4px_rgba(52,211,153,0.4)]" /><span className="text-emerald-400">AI: 规则引擎</span></>
+              <><span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_4px_rgba(52,211,153,0.4)]" /><span className="text-emerald-600">AI: 规则引擎</span></>
             )}
           </div>
         </div>
         <button onClick={() => setShowKeyInput(!showKeyInput)}
           className={cn("flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-all",
-            showKeyInput ? "bg-purple-500/10 text-purple-400" : "text-muted-foreground/40 hover:text-muted-foreground hover:bg-muted"
+            showKeyInput ? "bg-purple-50 text-purple-500" : "text-muted-foreground/40 hover:text-muted-foreground hover:bg-muted"
           )}
           title="API 设置"><Settings className="h-3.5 w-3.5" /></button>
       </div>
@@ -82,12 +82,12 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
             className="overflow-hidden border-b border-border">
             <div className="px-4 py-3 space-y-2">
-              <div className="flex items-center gap-1.5"><Brain className="h-3 w-3 text-purple-400" /><span className="text-[10px] font-semibold text-muted-foreground">Anthropic API Key</span></div>
+              <div className="flex items-center gap-1.5"><Brain className="h-3 w-3 text-purple-500" /><span className="text-[10px] font-semibold text-muted-foreground">Anthropic API Key</span></div>
               <div className="flex gap-1.5">
                 <Input type="password" value={keyDraft} onChange={(e) => setKeyDraft(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSaveKey()}
                   placeholder="sk-ant-api03-..." className="h-7 flex-1 rounded-md border-border bg-muted text-[10px] placeholder:text-muted-foreground/30 focus-visible:ring-purple-500/20" />
-                <button onClick={handleSaveKey} className="flex h-7 items-center rounded-md bg-purple-500/10 px-2.5 text-[10px] font-medium text-purple-400 hover:bg-purple-500/20 active:scale-95">保存</button>
-                {apiKey && <button onClick={handleClearKey} className="flex h-7 w-7 items-center justify-center rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 active:scale-95" title="清除"><X className="h-3 w-3" /></button>}
+                <button onClick={handleSaveKey} className="flex h-7 items-center rounded-md bg-purple-50 px-2.5 text-[10px] font-medium text-purple-500 hover:bg-purple-100 active:scale-95">保存</button>
+                {apiKey && <button onClick={handleClearKey} className="flex h-7 w-7 items-center justify-center rounded-md bg-red-50 text-red-500 hover:bg-red-100 active:scale-95" title="清除"><X className="h-3 w-3" /></button>}
               </div>
               <p className="text-[8px] text-muted-foreground/40">Key 仅存 sessionStorage，关闭浏览器自动清除，不上传服务器。</p>
             </div>
@@ -107,15 +107,15 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
                 className={cn("max-w-[90%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed",
                   m.role === "ai"
                     ? "self-start rounded-bl-sm border border-border bg-muted text-foreground/80"
-                    : "self-end rounded-br-sm border border-orange-500/15 bg-orange-500/5 text-[var(--accent)]"
+                    : "self-end rounded-br-sm border border-orange-100 bg-orange-50 text-orange-500"
                 )}
               >
                 <div className="whitespace-pre-wrap">{m.text}</div>
                 {m.tag && (
                   <span className={cn("mt-1 inline-block rounded px-1.5 py-0.5 text-[9px] font-semibold",
-                    m.tagClass === "tag-ok" && "bg-emerald-500/10 text-emerald-400",
-                    m.tagClass === "tag-tip" && "bg-amber-500/10 text-amber-400",
-                    m.tagClass === "tag-info" && "bg-sky-500/10 text-sky-400"
+                    m.tagClass === "tag-ok" && "bg-emerald-50 text-emerald-600",
+                    m.tagClass === "tag-tip" && "bg-amber-50 text-amber-600",
+                    m.tagClass === "tag-info" && "bg-sky-50 text-sky-600"
                   )}>{m.tag}</span>
                 )}
               </motion.div>
@@ -132,7 +132,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
       <div className="flex flex-wrap gap-1.5 px-3 pb-2">
         {QUICK.map((q) => (
           <button key={q} onClick={() => onSend(q)}
-            className="rounded-md border border-border bg-muted px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-orange-500/20 hover:text-orange-400"
+            className="rounded-md border border-border bg-muted px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-orange-200 hover:text-orange-500"
           >{q}</button>
         ))}
       </div>
@@ -145,7 +145,7 @@ export function ChatPanel({ messages, onSend, isTyping, aiMode, apiKey, onApiKey
             className="h-9 flex-1 rounded-lg border-border bg-muted text-xs placeholder:text-muted-foreground/30 focus-visible:ring-[var(--accent)]/20" />
           <button onClick={handleSend} disabled={isTyping}
             className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white shadow-md transition-all hover:shadow-lg active:scale-95",
-              isTyping ? "bg-muted opacity-50 cursor-not-allowed" : "bg-[var(--accent)] shadow-[var(--accent)]/30 hover:shadow-[var(--accent)]/50"
+              isTyping ? "bg-muted opacity-50 cursor-not-allowed" : "bg-orange-500 shadow-orange-200 hover:shadow-orange-300"
             )}><Send className="h-4 w-4" /></button>
         </div>
       </div>
