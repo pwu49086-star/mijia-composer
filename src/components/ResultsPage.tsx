@@ -36,7 +36,7 @@ export function ResultsPage({
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Header + Summary */}
-      <header className="shrink-0 bg-card border-b border-border/40">
+      <header className="shrink-0 bg-card border-b border-border">
         <div className="flex items-center justify-between px-6 h-12">
           <div className="flex items-center gap-3">
             <button type="button" onClick={onBack} title="返回修改" className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors">
@@ -62,7 +62,7 @@ export function ResultsPage({
       {/* Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left: Shopping */}
-        <div className="w-[420px] shrink-0 flex flex-col border-r border-border/30 bg-white">
+        <div className="w-[420px] shrink-0 flex flex-col border-r border-border bg-card">
           <div className="px-4 py-2.5 border-b border-border/20 text-[15px] font-bold text-muted-foreground">购物清单</div>
           <div className="flex-1 overflow-y-auto p-3.5 space-y-2">
             {rooms.map((r, i) => <RoomRow key={r.id} room={r} index={i} />)}
@@ -84,7 +84,7 @@ export function ResultsPage({
                 return true;
               }).map((s, i) => <StepCard key={s.step} step={s} delay={i * 0.03} />)}
             </div>
-            <div className="mt-3 rounded-lg border border-border/30 bg-muted/15 px-4 py-2.5 flex items-center gap-6 text-[11px] text-muted-foreground/70">
+            <div className="mt-3 rounded-lg border border-border/30 bg-muted px-4 py-2.5 flex items-center gap-6 text-[11px] text-muted-foreground/70">
               <span className="font-semibold text-muted-foreground">贴士</span>
               <span>• 网关放客厅中央，WiFi 信号好的位置</span>
               <span>• Zigbee 传感器电池续航约 1 年</span>
@@ -158,7 +158,7 @@ function RoomRow({ room, index }: { room: Room; index: number }) {
             <div className="border-t border-border/15 px-4 py-2 space-y-0.5">
               {room.devices.map((d) => (
                 <div key={d.id} className="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-muted/20 transition-colors group">
-                  <div className="h-7 w-7 flex items-center justify-center rounded-md bg-muted/30 group-hover:bg-muted transition-colors">
+                  <div className="h-7 w-7 flex items-center justify-center rounded-md bg-muted/50 group-hover:bg-muted transition-colors">
                     {(() => { const I = IconMap[d.icon] || Zap; return <I className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary transition-colors" />; })()}
                   </div>
                   <span className="flex-1 text-[13px] font-medium truncate">{d.name}</span>
@@ -254,17 +254,17 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
         <div className="space-y-1.5 text-[11px]">
           <div className="flex items-start gap-1.5">
             <span className="shrink-0 text-muted-foreground/50 mt-0.5">触发：</span>
-            <span className="text-foreground/60">{auto.trigger}</span>
+            <span className="text-muted-foreground">{auto.trigger}</span>
           </div>
           {auto.conditions && (
             <div className="flex items-start gap-1.5">
               <span className="shrink-0 text-muted-foreground/50 mt-0.5">条件：</span>
-              <span className="text-foreground/60">{auto.conditions.join("、")}</span>
+              <span className="text-muted-foreground">{auto.conditions.join("、")}</span>
             </div>
           )}
           <div className="flex items-start gap-1.5">
             <span className="shrink-0 text-muted-foreground/50 mt-0.5">动作：</span>
-            <div className="text-foreground/60">
+            <div className="text-muted-foreground">
               {auto.actions.slice(0, 3).map((a, j) => <div key={j} className="flex items-center gap-0.5"><ChevronRight className="h-2.5 w-2.5 text-primary/70" />{a}</div>)}
               {auto.actions.length > 3 && <div className="text-[10px] text-muted-foreground/40">+{auto.actions.length - 3}</div>}
             </div>
@@ -300,7 +300,7 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
               <div className="mt-2 ml-5 space-y-1 text-[10px] text-muted-foreground/70">
                 {auto.appSteps.map((s, j) => (
                   <div key={j} className="flex items-start gap-1.5">
-                    <span className="shrink-0 w-4 h-4 flex items-center justify-center rounded-full bg-muted/50 text-[9px] font-semibold text-muted-foreground mt-px">{j + 1}</span>
+                    <span className="shrink-0 w-4 h-4 flex items-center justify-center rounded-full bg-muted text-[9px] font-semibold text-muted-foreground mt-px">{j + 1}</span>
                     {s}
                   </div>
                 ))}

@@ -83,7 +83,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "se4",
       icon: "door",
-      name: "Aqara 门窗传感器",
+      name: "Aqara 门窗传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f.png",
       proto: "zigbee",
       price: 69,
       install: "wireless",
@@ -163,7 +163,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "sl2",
       icon: "curtain",
-      name: "Aqara 窗帘电机",
+      name: "Aqara 窗帘电机", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e.png",
       proto: "zigbee",
       price: 499,
       install: "wired",
@@ -199,7 +199,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "aw2",
       icon: "sensor",
-      name: "Aqara 人体传感器",
+      name: "Aqara 人体传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.png",
       proto: "zigbee",
       price: 89,
       install: "wireless",
@@ -215,7 +215,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "aw4",
       icon: "door",
-      name: "Aqara 门窗传感器",
+      name: "Aqara 门窗传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f.png",
       proto: "zigbee",
       price: 69,
       install: "wireless",
@@ -235,7 +235,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "ar1",
       icon: "sensor",
-      name: "Aqara 人体传感器",
+      name: "Aqara 人体传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.png",
       proto: "zigbee",
       price: 89,
       install: "wireless",
@@ -287,7 +287,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "mv2",
       icon: "curtain",
-      name: "Aqara 窗帘电机",
+      name: "Aqara 窗帘电机", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e.png",
       proto: "zigbee",
       price: 499,
       install: "wired",
@@ -323,7 +323,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "mo1",
       icon: "curtain",
-      name: "Aqara 窗帘电机",
+      name: "Aqara 窗帘电机", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e.png",
       proto: "zigbee",
       price: 499,
       install: "wired",
@@ -435,7 +435,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "pe4",
       icon: "sensor",
-      name: "Aqara 人体传感器",
+      name: "Aqara 人体传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.png",
       proto: "zigbee",
       price: 89,
       install: "wireless",
@@ -463,7 +463,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "fh3",
       icon: "sensor",
-      name: "Aqara 人体传感器",
+      name: "Aqara 人体传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.png",
       proto: "zigbee",
       price: 89,
       install: "wireless",
@@ -479,7 +479,7 @@ export const DEVICES: Record<string, Device[]> = {
     {
       id: "fh5",
       icon: "door",
-      name: "Aqara 门窗传感器",
+      name: "Aqara 门窗传感器", image: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f.png",
       proto: "zigbee",
       price: 69,
       install: "wireless",

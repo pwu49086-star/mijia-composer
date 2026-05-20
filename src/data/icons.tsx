@@ -65,6 +65,7 @@ export interface Device {
   name: string;
   proto: DeviceProto;
   price: number;
+  image?: string;
   install?: "wired" | "wireless" | "plug";
 }
 
