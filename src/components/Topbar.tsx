@@ -8,20 +8,16 @@ import { Button } from "./ui/button";
 import { ArrowRight, Sun, Moon } from "lucide-react";
 
 function useTheme() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   useEffect(() => {
     const stored = localStorage.getItem("mijia-theme");
-    setDark(stored !== "light");
+    setDark(stored === "dark");
   }, []);
   const toggle = () => {
     const next = !dark;
     setDark(next);
     localStorage.setItem("mijia-theme", next ? "dark" : "light");
-    if (next) {
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-    }
+    document.documentElement.classList.toggle("dark", next);
   };
   return { dark, toggle };
 }

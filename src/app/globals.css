@@ -14,7 +14,7 @@
   --color-sidebar-border: var(--border);
   --color-sidebar-accent-foreground: var(--fg);
   --color-sidebar-accent: var(--muted);
-  --color-sidebar-primary-foreground: var(--bg);
+  --color-sidebar-primary-foreground: oklch(1 0 0);
   --color-sidebar-primary: var(--accent);
   --color-sidebar-foreground: var(--fg);
   --color-sidebar: var(--card);
@@ -27,13 +27,13 @@
   --color-input: var(--border);
   --color-border: var(--border);
   --color-destructive: var(--danger);
-  --color-accent-foreground: var(--bg);
+  --color-accent-foreground: oklch(1 0 0);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-fg);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--fg);
   --color-secondary: var(--muted);
-  --color-primary-foreground: var(--bg);
+  --color-primary-foreground: oklch(1 0 0);
   --color-primary: var(--accent);
   --color-popover-foreground: var(--fg);
   --color-popover: var(--card);
@@ -48,51 +48,36 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ─── Dark Mode (default) ─── */
+/* ─── Light Mode (default) - Xiaomi Orange ─── */
 :root {
-  --bg: oklch(0.13 0.01 260);
-  --fg: oklch(0.95 0 0);
-  --card: oklch(0.18 0.008 260);
-  --muted: oklch(0.21 0.006 260);
-  --muted-fg: oklch(0.62 0.01 260);
-  --border: oklch(1 0 0 / 0.07);
-  --accent: oklch(0.72 0.16 50);
-  --accent-secondary: oklch(0.63 0.14 155);
-  --danger: oklch(0.58 0.22 20);
+  --bg: oklch(0.985 0 0);
+  --fg: oklch(0.18 0.005 260);
+  --card: oklch(1 0 0);
+  --muted: oklch(0.96 0.003 85);
+  --muted-fg: oklch(0.48 0.01 260);
+  --border: oklch(0.10 0 0 / 0.07);
+  --accent: oklch(0.63 0.21 42);
+  --accent-secondary: oklch(0.55 0.15 155);
+  --danger: oklch(0.55 0.22 20);
   --radius: 0.625rem;
-  --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.05), 0 4px 24px oklch(0 0 0 / 0.4);
-  --shadow-glow: 0 0 20px oklch(0.72 0.16 50 / 0.15);
+  --shadow-card: 0 0 0 1px oklch(0 0 0 / 0.04), 0 1px 4px oklch(0 0 0 / 0.04), 0 4px 16px oklch(0 0 0 / 0.04);
+  --shadow-glow: 0 0 16px oklch(0.63 0.21 42 / 0.12);
   --font-sans: var(--font-geist-sans);
 }
 
-/* ─── Light Mode ─── */
-.light {
-  --bg: oklch(0.97 0.005 90);
-  --fg: oklch(0.18 0.005 260);
-  --card: oklch(0.99 0.002 90);
-  --muted: oklch(0.94 0.005 90);
-  --muted-fg: oklch(0.50 0.01 260);
-  --border: oklch(0.12 0 0 / 0.08);
-  --accent: oklch(0.58 0.16 45);
-  --accent-secondary: oklch(0.52 0.12 155);
-  --shadow-card: 0 0 0 1px oklch(0 0 0 / 0.04), 0 2px 12px oklch(0 0 0 / 0.06);
-  --shadow-glow: 0 0 16px oklch(0.58 0.16 45 / 0.12);
-}
-
-/* shadcn dark mode keep for compat */
+/* ─── Dark Mode ─── */
 .dark {
-  --bg: oklch(0.13 0.01 260);
+  --bg: oklch(0.145 0.01 260);
   --fg: oklch(0.95 0 0);
-  --card: oklch(0.18 0.008 260);
-  --muted: oklch(0.21 0.006 260);
-  --muted-fg: oklch(0.62 0.01 260);
-  --border: oklch(1 0 0 / 0.07);
-  --accent: oklch(0.72 0.16 50);
-  --accent-secondary: oklch(0.63 0.14 155);
-  --danger: oklch(0.58 0.22 20);
-  --radius: 0.625rem;
+  --card: oklch(0.19 0.008 260);
+  --muted: oklch(0.22 0.006 260);
+  --muted-fg: oklch(0.60 0.01 260);
+  --border: oklch(1 0 0 / 0.08);
+  --accent: oklch(0.68 0.20 42);
+  --accent-secondary: oklch(0.60 0.13 155);
+  --danger: oklch(0.55 0.20 20);
   --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.05), 0 4px 24px oklch(0 0 0 / 0.4);
-  --shadow-glow: 0 0 20px oklch(0.72 0.16 50 / 0.15);
+  --shadow-glow: 0 0 20px oklch(0.68 0.20 42 / 0.18);
 }
 
 @layer base {
@@ -111,8 +96,8 @@
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 0.1); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: oklch(1 0 0 / 0.18); }
+::-webkit-scrollbar-thumb { background: oklch(0 0 0 / 0.12); border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 0.10); }
 
 /* ─── Selection ─── */
-::selection { background: oklch(0.72 0.16 50 / 0.25); color: var(--fg); }
+::selection { background: oklch(0.63 0.21 42 / 0.15); color: var(--fg); }
