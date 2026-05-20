@@ -36,14 +36,14 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
         {/* Scene selection */}
         <section className="mb-2">
           <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2.5 w-0.5 rounded-full bg-indigo-500/50" />
+            <span className="h-2.5 w-0.5 rounded-full bg-primary/50" />
             <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               选择场景
             </span>
             <button
               type="button"
               onClick={selAll}
-              className="ml-auto text-[10px] font-medium text-indigo-500 transition-opacity hover:opacity-70"
+              className="ml-auto text-[10px] font-medium text-primary transition-opacity hover:opacity-70"
             >
               全选
             </button>
@@ -63,7 +63,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   className={cn(
                     "group flex items-center gap-2 rounded-lg border border-transparent px-2 py-1.5 text-left transition-all",
                     active
-                      ? "border-indigo-500/12 bg-indigo-500/[0.04]"
+                      ? "border-primary/15 bg-primary/5"
                       : "hover:bg-muted/60"
                   )}
                 >
@@ -71,7 +71,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                     className={cn(
                       "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all",
                       active
-                        ? "border-indigo-500/10 bg-indigo-500/[0.06]"
+                        ? "border-primary/10 bg-primary/10"
                         : "border-border bg-muted"
                     )}
                   >
@@ -79,7 +79,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                       <Icon
                         className={cn(
                           "h-3 w-3 transition-colors",
-                          active ? "text-indigo-500" : "text-muted-foreground"
+                          active ? "text-primary" : "text-muted-foreground"
                         )}
                       />
                     )}
@@ -89,7 +89,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                     <div
                       className={cn(
                         "text-[12px] font-semibold transition-colors",
-                        active ? "text-indigo-600" : "text-foreground"
+                        active ? "text-primary" : "text-foreground"
                       )}
                     >
                       {s.name}
@@ -102,7 +102,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   <span
                     className={cn(
                       "shrink-0 font-mono text-[11px] font-semibold transition-colors",
-                      active ? "text-indigo-500" : "text-muted-foreground"
+                      active ? "text-primary" : "text-muted-foreground"
                     )}
                   >
                     ¥{getScenePrice(s.id)}
@@ -112,7 +112,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                     className={cn(
                       "flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all",
                       active
-                        ? "border-indigo-500 bg-indigo-500"
+                        ? "border-primary bg-primary"
                         : "border-border"
                     )}
                   >
@@ -129,7 +129,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
         {/* Family */}
         <section className="mb-3">
           <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2.5 w-0.5 rounded-full bg-indigo-500/50" />
+            <span className="h-2.5 w-0.5 rounded-full bg-primary/50" />
             <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               家庭成员
             </span>
@@ -143,7 +143,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
                   family.includes(o.v)
-                    ? "border-indigo-500/15 bg-indigo-500/[0.06] text-indigo-600"
+                    ? "border-primary/15 bg-primary/10 text-primary"
                     : "border-border bg-muted text-muted-foreground hover:border-border/80"
                 )}
               >
@@ -156,7 +156,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
         {/* User type */}
         <section>
           <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2 w-0.5 rounded-full bg-indigo-500/50" />
+            <span className="h-2 w-0.5 rounded-full bg-primary/50" />
             <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               装修阶段
             </span>
@@ -170,14 +170,14 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                 className={cn(
                   "flex items-center justify-between rounded-lg border px-3 py-1.5 text-left transition-all",
                   reno === o.v
-                    ? "border-indigo-500/20 bg-indigo-500/[0.06] shadow-sm"
+                    ? "border-primary/20 bg-primary/10 shadow-sm"
                     : "border-border hover:bg-muted/60"
                 )}
               >
                 <span
                   className={cn(
                     "text-xs font-semibold transition-colors",
-                    reno === o.v ? "text-indigo-600" : "text-foreground"
+                    reno === o.v ? "text-primary" : "text-foreground"
                   )}
                 >
                   {o.t}
@@ -186,7 +186,7 @@ export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setRe
                   <span
                     className={cn(
                       "text-[9px] transition-colors",
-                      reno === o.v ? "text-indigo-500/70" : "text-muted-foreground"
+                      reno === o.v ? "text-primary/70" : "text-muted-foreground"
                     )}
                   >
                     {o.tip}

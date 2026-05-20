@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const protoLabel: Record<string, { label: string; color: string }> = {
   wifi: { label: "WiFi 直连", color: "bg-zinc-400" },
   zigbee: { label: "Zigbee → 网关", color: "bg-green-500" },
-  ble_mesh: { label: "Mesh → 网关", color: "bg-indigo-500" },
+  ble_mesh: { label: "Mesh → 网关", color: "bg-primary" },
 };
 
 const installLabel: Record<string, string> = {
@@ -29,8 +29,8 @@ export function DeviceItem({ device, onRemove }: { device: Device; onRemove?: ()
       transition={{ duration: 0.15 }}
       className="group flex items-center gap-2 rounded-lg border border-transparent bg-muted/60 px-2 py-1.5 transition-all hover:border-border hover:bg-card hover:translate-x-0.5"
     >
-      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-border bg-card transition-all group-hover:border-indigo-500/30 group-hover:bg-indigo-500/[0.04]">
-        {Icon && <Icon className="h-3 w-3 text-muted-foreground transition-colors group-hover:text-indigo-500" />}
+      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-border bg-card transition-all group-hover:border-primary/30 group-hover:bg-primary/5">
+        {Icon && <Icon className="h-3 w-3 text-muted-foreground transition-colors group-hover:text-primary" />}
       </div>
 
       <div className="min-w-0 flex-1">
@@ -46,7 +46,7 @@ export function DeviceItem({ device, onRemove }: { device: Device; onRemove?: ()
         </div>
       </div>
 
-      <span className="shrink-0 font-mono text-[9px] font-semibold text-indigo-500">
+      <span className="shrink-0 font-mono text-[9px] font-semibold text-primary">
         ¥{device.price}
       </span>
 

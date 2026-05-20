@@ -38,7 +38,7 @@ export function ChatPanel({ messages, onSend }: Props) {
     >
       {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 shadow-md shadow-indigo-500/25">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] shadow-md shadow-primary/25">
           <MessageSquare className="h-4 w-4 text-white" />
         </div>
         <div>
@@ -64,7 +64,7 @@ export function ChatPanel({ messages, onSend }: Props) {
                   "max-w-[90%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed",
                   m.role === "ai"
                     ? "self-start rounded-bl-sm border border-border bg-muted/60 text-foreground/80"
-                    : "self-end rounded-br-sm border border-indigo-500/10 bg-indigo-500/[0.06] text-indigo-600"
+                    : "self-end rounded-br-sm border border-primary/10 bg-primary/10 text-primary"
                 )}
               >
                 <div className="whitespace-pre-wrap">{m.text}</div>
@@ -92,7 +92,7 @@ export function ChatPanel({ messages, onSend }: Props) {
           <button
             key={q}
             onClick={() => onSend(q)}
-            className="rounded-md border border-border bg-muted/60 px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-indigo-500/30 hover:text-indigo-500"
+            className="rounded-md border border-border bg-muted/60 px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:border-primary/30 hover:text-primary"
           >
             {q}
           </button>
@@ -107,11 +107,11 @@ export function ChatPanel({ messages, onSend }: Props) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="问我任何问题..."
-            className="h-9 flex-1 rounded-lg border-border bg-muted/40 text-xs placeholder:text-muted-foreground/50 focus-visible:ring-indigo-500/20"
+            className="h-9 flex-1 rounded-lg border-border bg-muted/40 text-xs placeholder:text-muted-foreground/50 focus-visible:ring-primary/20"
           />
           <button
             onClick={handleSend}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 text-white shadow-md shadow-indigo-500/25 transition-all hover:shadow-lg hover:shadow-indigo-500/35 active:scale-95"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] text-white shadow-md shadow-primary/25 transition-all hover:shadow-lg hover:shadow-primary/35 active:scale-95"
           >
             <Send className="h-4 w-4" />
           </button>

@@ -29,14 +29,14 @@ export function RoomCard({ room, index }: { room: Room; index: number }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-2.5 px-3 py-2.5 transition-colors hover:bg-muted/40"
       >
-        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-border bg-muted transition-all group-hover:border-indigo-500/10 group-hover:bg-indigo-500/[0.04]">
-          {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-indigo-500" />}
+        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-border bg-muted transition-all group-hover:border-primary/10 group-hover:bg-primary/5">
+          {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-primary" />}
         </div>
         <div className="min-w-0 flex-1 text-left">
           <div className="text-[11px] font-semibold text-foreground">{room.name}</div>
           <div className="text-[9px] text-muted-foreground">{room.devices.length} 个设备</div>
         </div>
-        <span className="shrink-0 font-mono text-[10px] font-semibold text-indigo-500">
+        <span className="shrink-0 font-mono text-[10px] font-semibold text-primary">
           ¥{room.price}
         </span>
         <motion.div

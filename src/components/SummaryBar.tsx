@@ -36,7 +36,7 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
           <Trash2 className="h-3.5 w-3.5" />
           清空
         </Button>
-        <Button size="sm" className="h-8 gap-1.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-xs shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/30" onClick={onExport}>
+        <Button size="sm" className="h-8 gap-1.5 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)] text-xs shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30" onClick={onExport}>
           查看方案
           <ArrowRight className="h-3.5 w-3.5" />
         </Button>

@@ -22,7 +22,7 @@ interface Props {
 const protoInfo: Record<string, { label: string; dot: string }> = {
   wifi: { label: "WiFi", dot: "bg-zinc-400" },
   zigbee: { label: "Zigbee", dot: "bg-emerald-500" },
-  ble_mesh: { label: "Mesh", dot: "bg-indigo-500" },
+  ble_mesh: { label: "Mesh", dot: "bg-primary" },
 };
 
 const installInfo: Record<string, { label: string; color: string }> = {
@@ -49,7 +49,7 @@ export function TopologyView({ rooms, needsGateway, totalDevices, totalPrice, sc
               <HubPill icon={Router} label="路由器" />
               {needsGateway && (
                 <>
-                  <div className="h-px w-5 bg-gradient-to-r from-indigo-300 to-indigo-400" />
+                  <div className="h-px w-5 bg-gradient-to-r from-[var(--accent)]/60 to-[var(--accent)]" />
                   <HubPill icon={Cpu} label="多模网关" accent />
                 </>
               )}
@@ -78,7 +78,7 @@ export function TopologyView({ rooms, needsGateway, totalDevices, totalPrice, sc
             >
               <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-zinc-400" />WiFi 直连</span>
               <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-emerald-500" />Zigbee 低功耗</span>
-              <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-indigo-500" />BLE Mesh</span>
+              <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary" />BLE Mesh</span>
             </motion.div>
           </>
         )}
@@ -103,7 +103,7 @@ function HubPill({ icon: Icon, label, accent }: { icon: typeof Router; label: st
   return (
     <div className={cn(
       "flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm",
-      accent ? "border-indigo-200 bg-indigo-50 text-indigo-600" : "border-border bg-card text-foreground"
+      accent ? "border-primary/30 bg-muted text-primary" : "border-border bg-card text-foreground"
     )}>
       <Icon className="h-4 w-4" />
       {label}
@@ -131,14 +131,14 @@ function RoomCardV2({ room, index }: { room: Room; index: number }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-2.5 px-3 py-2.5 transition-colors hover:bg-muted/30"
       >
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 border border-indigo-100">
-          <Icon className="h-4 w-4 text-indigo-500" />
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted border border-primary/20">
+          <Icon className="h-4 w-4 text-primary" />
         </div>
         <div className="flex-1 text-left">
           <div className="text-xs font-semibold">{room.name}</div>
           <div className="text-[10px] text-muted-foreground">{room.devices.length} 个设备</div>
         </div>
-        <span className="font-mono text-xs font-bold text-indigo-600">¥{room.price.toLocaleString()}</span>
+        <span className="font-mono text-xs font-bold text-primary">¥{room.price.toLocaleString()}</span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.15 }}>
           <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
         </motion.div>
@@ -198,7 +198,7 @@ function DeviceRow({ device, delay }: { device: Device; delay: number }) {
       </div>
 
       {/* Price */}
-      <span className="flex-shrink-0 font-mono text-[11px] font-semibold text-indigo-500">¥{device.price}</span>
+      <span className="flex-shrink-0 font-mono text-[11px] font-semibold text-primary">¥{device.price}</span>
     </motion.div>
   );
 }

@@ -34,9 +34,9 @@ export function ResultsPage({
   selectedScenes, renovation, onBack, onExport,
 }: Props) {
   return (
-    <div className="h-screen flex flex-col bg-[#f8f9fa]">
+    <div className="h-screen flex flex-col bg-background">
       {/* Header + Summary */}
-      <header className="shrink-0 bg-white border-b border-border/40">
+      <header className="shrink-0 bg-card border-b border-border/40">
         <div className="flex items-center justify-between px-6 h-12">
           <div className="flex items-center gap-3">
             <button type="button" onClick={onBack} title="返回修改" className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors">
@@ -52,7 +52,7 @@ export function ResultsPage({
           <div className="flex items-center gap-4">
             <span className="font-mono text-lg font-extrabold">¥{totalPrice.toLocaleString()}</span>
             <span className="text-xs text-muted-foreground">{totalDevices} 设备 · {rooms.length} 房间 · {selectedScenes.length} 场景</span>
-            {needsGateway && <span className="text-[10px] text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full px-2 py-0.5 flex items-center gap-1"><Cpu className="h-3 w-3" />需网关</span>}
+            {needsGateway && <span className="text-[10px] text-primary bg-muted border border-primary/20 rounded-full px-2 py-0.5 flex items-center gap-1"><Cpu className="h-3 w-3" />需网关</span>}
             <Button variant="outline" size="sm" className="h-7 px-3 text-xs gap-1.5"><Share2 className="h-3.5 w-3.5" />分享</Button>
             <Button size="sm" className="h-7 px-3 text-xs gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white" onClick={onExport}><Download className="h-3.5 w-3.5" />导出</Button>
           </div>
@@ -114,7 +114,7 @@ function Section({ icon: Icon, title, children }: { icon: typeof Wrench; title: 
   return (
     <div className="px-5 py-4 border-b border-border/20">
       <div className="flex items-center gap-2 mb-3.5">
-        <Icon className="h-4.5 w-4.5 text-indigo-500" />
+        <Icon className="h-4.5 w-4.5 text-primary" />
         <span className="text-[15px] font-bold">{title}</span>
       </div>
       {children}
@@ -132,18 +132,18 @@ function RoomRow({ room, index }: { room: Room; index: number }) {
       initial={{ opacity: 0, x: -4 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.05 + index * 0.03 }}
-      className="rounded-lg border border-border/40 bg-white overflow-hidden hover:border-indigo-200/40 transition-colors"
+      className="rounded-lg border border-border/40 bg-card overflow-hidden hover:border-primary/20 transition-colors"
     >
       <button type="button" onClick={() => setOpen(!open)} className="flex items-center justify-between w-full px-4 py-3">
         <div className="flex items-center gap-2.5">
           <motion.div animate={{ rotate: open ? 90 : 0 }} className="text-muted-foreground/30">
             <ChevronRight className="h-4 w-4" />
           </motion.div>
-          <Icon className="h-4.5 w-4.5 text-indigo-500" />
+          <Icon className="h-4.5 w-4.5 text-primary" />
           <span className="text-sm font-semibold">{room.name}</span>
           <span className="text-[11px] text-muted-foreground/50">{room.devices.length}件</span>
         </div>
-        <span className="font-mono text-[15px] font-bold text-indigo-600">¥{room.price.toLocaleString()}</span>
+        <span className="font-mono text-[15px] font-bold text-primary">¥{room.price.toLocaleString()}</span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -158,14 +158,14 @@ function RoomRow({ room, index }: { room: Room; index: number }) {
             <div className="border-t border-border/15 px-4 py-2 space-y-0.5">
               {room.devices.map((d) => (
                 <div key={d.id} className="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-muted/20 transition-colors group">
-                  <div className="h-7 w-7 flex items-center justify-center rounded-md bg-muted/30 group-hover:bg-indigo-50 transition-colors">
-                    {(() => { const I = IconMap[d.icon] || Zap; return <I className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-indigo-500 transition-colors" />; })()}
+                  <div className="h-7 w-7 flex items-center justify-center rounded-md bg-muted/30 group-hover:bg-muted transition-colors">
+                    {(() => { const I = IconMap[d.icon] || Zap; return <I className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary transition-colors" />; })()}
                   </div>
                   <span className="flex-1 text-[13px] font-medium truncate">{d.name}</span>
                   <span className={cn("text-[10px] font-semibold rounded px-1.5 py-px",
                     d.install === "wired" ? "bg-amber-50 text-amber-600" : d.install === "wireless" ? "bg-emerald-50 text-emerald-600" : "bg-blue-50 text-blue-600"
                   )}>{d.install === "wired" ? "布线" : d.install === "wireless" ? "无线" : "插电"}</span>
-                  <span className="font-mono text-[13px] font-bold text-indigo-500">¥{d.price}</span>
+                  <span className="font-mono text-[13px] font-bold text-primary">¥{d.price}</span>
                 </div>
               ))}
             </div>
@@ -180,10 +180,10 @@ function RoomRow({ room, index }: { room: Room; index: number }) {
 function GatewayRow() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
-      className="flex items-center gap-2.5 rounded-lg border border-dashed border-indigo-200 bg-indigo-50/20 px-3.5 py-3">
-      <Cpu className="h-4 w-4 text-indigo-500" />
-      <span className="flex-1 text-[13px] font-medium text-indigo-700">多模网关（必需）</span>
-      <span className="font-mono text-[13px] font-bold text-indigo-600">¥169</span>
+      className="flex items-center gap-2.5 rounded-lg border border-dashed border-primary/30 bg-primary/10 px-3.5 py-3">
+      <Cpu className="h-4 w-4 text-primary" />
+      <span className="flex-1 text-[13px] font-medium text-primary">多模网关（必需）</span>
+      <span className="font-mono text-[13px] font-bold text-primary">¥169</span>
     </motion.div>
   );
 }
@@ -203,9 +203,9 @@ const difficultyLabel: Record<string, string> = {
 function StepCard({ step, delay }: { step: typeof INSTALL_ORDER[0]; delay: number }) {
   return (
     <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }}
-      className="flex items-start gap-3 rounded-lg border border-border/40 bg-white px-4 py-3.5 hover:border-indigo-200/40 transition-colors group"
+      className="flex items-start gap-3 rounded-lg border border-border/40 bg-card px-4 py-3.5 hover:border-primary/20 transition-colors group"
     >
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-500 text-[11px] font-bold text-white group-hover:scale-105 transition-transform">
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-white group-hover:scale-105 transition-transform">
         {step.step}
       </div>
       <div className="flex-1 min-w-0">
@@ -229,11 +229,11 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
 
   return (
     <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }}
-      className="rounded-lg border border-border/40 bg-white overflow-hidden hover:border-indigo-200/40 transition-colors"
+      className="rounded-lg border border-border/40 bg-card overflow-hidden hover:border-primary/20 transition-colors"
     >
       <div className="p-4">
         <div className="text-[13px] font-bold mb-3 flex items-center gap-2">
-          <IconComp className="h-4 w-4 text-indigo-400" />
+          <IconComp className="h-4 w-4 text-primary/70" />
           {auto.name}
         </div>
 
@@ -247,7 +247,7 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
               <svg width="20" height="12" className="shrink-0"><line x1="0" y1="6" x2="18" y2="6" stroke="#d4d4d8" strokeWidth="1.5" strokeDasharray="2,2"/><polygon points="14,2 20,6 14,10" fill="#d4d4d8"/></svg>
             </>
           ) : null}
-          <span className="shrink-0 rounded-md bg-indigo-50 border border-indigo-100 px-2 py-0.5 text-[10px] font-semibold text-indigo-600">动作</span>
+          <span className="shrink-0 rounded-md bg-muted border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">动作</span>
         </div>
 
         {/* Details */}
@@ -265,7 +265,7 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
           <div className="flex items-start gap-1.5">
             <span className="shrink-0 text-muted-foreground/50 mt-0.5">动作：</span>
             <div className="text-foreground/60">
-              {auto.actions.slice(0, 3).map((a, j) => <div key={j} className="flex items-center gap-0.5"><ChevronRight className="h-2.5 w-2.5 text-indigo-400" />{a}</div>)}
+              {auto.actions.slice(0, 3).map((a, j) => <div key={j} className="flex items-center gap-0.5"><ChevronRight className="h-2.5 w-2.5 text-primary/70" />{a}</div>)}
               {auto.actions.length > 3 && <div className="text-[10px] text-muted-foreground/40">+{auto.actions.length - 3}</div>}
             </div>
           </div>
@@ -282,7 +282,7 @@ function AutoCard({ auto, delay }: { auto: typeof AUTOMATION_TEMPLATES[string]; 
           <button
             type="button"
             onClick={() => setShowApp(!showApp)}
-            className="mt-3 text-[10px] text-indigo-500 hover:text-indigo-600 font-medium flex items-center gap-1 transition-colors"
+            className="mt-3 text-[10px] text-primary hover:text-primary font-medium flex items-center gap-1 transition-colors"
           >
             <ChevronRight className={cn("h-3 w-3 transition-transform", showApp && "rotate-90")} />
             {showApp ? "收起" : "米家App设置步骤"}

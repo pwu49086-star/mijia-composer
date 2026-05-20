@@ -42,7 +42,7 @@ export function PriceBreakdown({ open, onOpenChange, rooms, needsGateway, totalP
                         {d.proto === "wifi" ? "WiFi" : d.proto === "zigbee" ? "Zigbee" : "Mesh"}
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] font-semibold text-indigo-500">¥{d.price}</span>
+                    <span className="font-mono text-[11px] font-semibold text-primary">¥{d.price}</span>
                   </div>
                 ))}
               </div>
@@ -56,14 +56,14 @@ export function PriceBreakdown({ open, onOpenChange, rooms, needsGateway, totalP
                     <span className="text-[11px] font-medium text-foreground/80">小米多模网关</span>
                     <span className="ml-1.5 text-[9px] text-muted-foreground">必需</span>
                   </div>
-                  <span className="font-mono text-[11px] font-semibold text-indigo-500">¥169</span>
+                  <span className="font-mono text-[11px] font-semibold text-primary">¥169</span>
                 </div>
               </div>
             )}
 
             <div className="mt-4 flex items-center justify-between border-t-2 border-border pt-3">
               <span className="text-sm font-bold">总计</span>
-              <span className="font-mono text-xl font-extrabold text-indigo-500">¥{totalPrice}</span>
+              <span className="font-mono text-xl font-extrabold text-primary">¥{totalPrice}</span>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export function PriceBreakdown({ open, onOpenChange, rooms, needsGateway, totalP
             <Button variant="outline" size="sm" className="h-8 text-[11px]" onClick={() => onOpenChange(false)}>
               关闭
             </Button>
-            <Button size="sm" className="h-8 gap-1.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-[11px] shadow-md shadow-indigo-500/20" onClick={onExport}>
+            <Button size="sm" className="h-8 gap-1.5 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)] text-[11px] shadow-md shadow-primary/20" onClick={onExport}>
               导出方案
             </Button>
           </div>
