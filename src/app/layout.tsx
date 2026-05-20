@@ -27,14 +27,7 @@ export default function RootLayout({
       lang="zh-CN"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("mijia-theme");if(t==="dark")document.documentElement.classList.add("dark")}catch(e){}})()`,
-          }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+<body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
