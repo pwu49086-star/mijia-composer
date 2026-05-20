@@ -1,6 +1,7 @@
 "use client";
 
 import { useConfig } from "@/hooks/useConfig";
+import { useAI } from "@/hooks/useAI";
 import { Topbar } from "@/components/Topbar";
 import { ScenePanel } from "@/components/ScenePanel";
 import { TopologyView } from "@/components/TopologyView";
@@ -10,17 +11,25 @@ import { ResultsPage } from "@/components/ResultsPage";
 
 export default function Home() {
   const {
-    sel, setSel,
+    sel,
     family, toggleFamily,
     reno, setReno,
     view, setView,
-    messages,
     showBreakdown, setShowBreakdown,
     rooms, needsGateway,
     totalDevices, totalPrice,
     getScenePrice,
-    tog, selAll, clearAll, sendMessage,
+    tog, selAll, clearAll,
   } = useConfig();
+
+  const {
+    messages,
+    sendMessage,
+    isTyping,
+    apiKey,
+    setApiKey,
+    aiMode,
+  } = useAI({ sel, rooms, needsGateway, totalDevices, totalPrice, reno, family });
 
   const exportPlan = () => {
     const lines = ["米家智能家居方案", "====================", ""];
@@ -88,7 +97,14 @@ export default function Home() {
           onExport={goToResult}
         />
 
-        <ChatPanel messages={messages} onSend={sendMessage} />
+        <ChatPanel
+          messages={messages}
+          onSend={sendMessage}
+          isTyping={isTyping}
+          aiMode={aiMode}
+          apiKey={apiKey}
+          onApiKeyChange={setApiKey}
+        />
       </div>
 
       <PriceBreakdown
