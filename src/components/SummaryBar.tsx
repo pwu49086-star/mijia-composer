@@ -5,12 +5,8 @@ import { Button } from "@/components/ui/button";
 import { FileText, Trash2, ArrowRight } from "lucide-react";
 
 interface Props {
-  totalDevices: number;
-  totalPrice: number;
-  sceneCount: number;
-  onBreakdown: () => void;
-  onClear: () => void;
-  onExport: () => void;
+  totalDevices: number; totalPrice: number; sceneCount: number;
+  onBreakdown: () => void; onClear: () => void; onExport: () => void;
 }
 
 export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, onClear, onExport }: Props) {
@@ -19,37 +15,30 @@ export function SummaryBar({ totalDevices, totalPrice, sceneCount, onBreakdown, 
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.2 }}
-      className="flex shrink-0 items-center justify-between border-t border-border bg-card px-4 py-2.5 shadow-[0_-2px_8px_rgba(0,0,0,0.03)]"
+      className="flex shrink-0 items-center justify-between border-t border-white/5 glass-strong px-4 py-2.5"
     >
       <div className="flex gap-5">
         <Stat value={totalDevices} label="设备" />
-        <Stat value={`¥${totalPrice}`} label="预估总价" />
+        <Stat value={`¥${totalPrice}`} label="总价" glow />
         <Stat value={sceneCount} label="场景" />
       </div>
-
       <div className="flex items-center gap-2">
-        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-xs" onClick={onBreakdown}>
-          <FileText className="h-3.5 w-3.5" />
-          明细
-        </Button>
-        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-xs" onClick={onClear}>
-          <Trash2 className="h-3.5 w-3.5" />
-          清空
-        </Button>
-        <Button size="sm" className="h-8 gap-1.5 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)] text-xs shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30" onClick={onExport}>
-          查看方案
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Button>
+        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-white/10 bg-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground" onClick={onBreakdown}>
+          <FileText className="h-3.5 w-3.5" />明细</Button>
+        <Button size="sm" variant="outline" className="h-8 gap-1.5 text-[11px] border-white/10 bg-white/5 text-muted-foreground hover:border-red-500/20 hover:text-red-400" onClick={onClear}>
+          <Trash2 className="h-3.5 w-3.5" />清空</Button>
+        <Button size="sm" className="h-8 gap-1.5 bg-[var(--accent)] text-xs shadow-md shadow-[var(--accent)]/30 hover:shadow-[var(--accent)]/50" onClick={onExport}>
+          查看方案<ArrowRight className="h-3.5 w-3.5" /></Button>
       </div>
     </motion.div>
   );
 }
 
-function Stat({ value, label }: { value: string | number; label: string }) {
+function Stat({ value, label, glow }: { value: string | number; label: string; glow?: boolean }) {
   return (
     <div className="relative text-center">
-      <div className="font-mono text-lg font-bold leading-none">{value}</div>
-      <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className={glow ? "font-mono text-lg font-bold num-glow text-[var(--accent)]" : "font-mono text-lg font-bold"}>{value}</div>
+      <div className="mt-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">{label}</div>
     </div>
   );
 }

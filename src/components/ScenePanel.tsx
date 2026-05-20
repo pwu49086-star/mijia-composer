@@ -19,183 +19,119 @@ interface Props {
 }
 
 export function ScenePanel({ sel, tog, selAll, family, toggleFamily, reno, setReno, getScenePrice }: Props) {
+  const allSelected = sel.length === SCENES.length;
+
   return (
     <motion.aside
-      initial={{ x: -20, opacity: 0 }}
+      initial={{ x: -16, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.05 }}
-      className="flex w-72 shrink-0 flex-col border-r border-border bg-card"
+      transition={{ type: "spring", stiffness: 280, damping: 28, delay: 0.03 }}
+      className="flex w-72 shrink-0 flex-col border-r border-white/5 glass"
     >
-      <div className="border-b border-border px-4 py-3">
-        <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-          Configuration
-        </span>
+      <div className="border-b border-white/5 px-4 py-3 flex items-center justify-between">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">场景配置</span>
+        <button
+          type="button" onClick={selAll}
+          className={cn(
+            "text-[10px] font-medium transition-all px-2 py-0.5 rounded-md",
+            allSelected ? "bg-[var(--accent)]/10 text-[var(--accent)]" : "text-muted-foreground hover:text-[var(--accent)]"
+          )}
+        >
+          {allSelected ? "已全选" : "全选"}
+        </button>
       </div>
 
-      <ScrollArea className="flex-1 px-4 py-2">
-        {/* Scene selection */}
-        <section className="mb-2">
-          <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2.5 w-0.5 rounded-full bg-primary/50" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              选择场景
-            </span>
-            <button
-              type="button"
-              onClick={selAll}
-              className="ml-auto text-[10px] font-medium text-primary transition-opacity hover:opacity-70"
-            >
-              全选
-            </button>
+      <ScrollArea className="flex-1 px-3 py-2">
+        <div className="mb-2">
+          <div className="mb-1.5 flex items-center gap-1.5 px-1">
+            <span className="h-2.5 w-0.5 rounded-full bg-[var(--accent)]/50" />
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">选择场景</span>
           </div>
 
-          <div className="flex flex-col gap-px">
+          <div className="flex flex-col gap-0.5">
             {SCENES.map((s, idx) => {
               const active = sel.includes(s.id);
               const Icon = SceneIconMap[s.icon];
               return (
                 <motion.button
-                  key={s.id}
-                  onClick={() => tog(s.id)}
+                  key={s.id} onClick={() => tog(s.id)}
                   initial={{ opacity: 0, x: -6 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.025, duration: 0.2 }}
+                  transition={{ delay: idx * 0.02, duration: 0.18 }}
                   className={cn(
-                    "group flex items-center gap-2 rounded-lg border border-transparent px-2 py-1.5 text-left transition-all",
+                    "group flex items-center gap-2.5 rounded-xl border px-2.5 py-2 text-left transition-all duration-300",
                     active
-                      ? "border-primary/15 bg-primary/5"
-                      : "hover:bg-muted/60"
+                      ? "border-cyan-500/20 bg-cyan-500/10 shadow-[0_0_12px_rgba(6,182,212,0.08)]"
+                      : "border-transparent hover:border-white/5 hover:bg-white/5"
                   )}
                 >
-                  <div
-                    className={cn(
-                      "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all",
-                      active
-                        ? "border-primary/10 bg-primary/10"
-                        : "border-border bg-muted"
-                    )}
-                  >
-                    {Icon && (
-                      <Icon
-                        className={cn(
-                          "h-3 w-3 transition-colors",
-                          active ? "text-primary" : "text-muted-foreground"
-                        )}
-                      />
-                    )}
+                  <div className={cn(
+                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all",
+                    active ? "border-cyan-500/20 bg-cyan-500/10" : "border-white/5 bg-white/5"
+                  )}>
+                    {Icon && <Icon className={cn("h-3.5 w-3.5", active ? "text-[var(--accent)]" : "text-muted-foreground")} />}
                   </div>
-
                   <div className="min-w-0 flex-1">
-                    <div
-                      className={cn(
-                        "text-[12px] font-semibold transition-colors",
-                        active ? "text-primary" : "text-foreground"
-                      )}
-                    >
-                      {s.name}
-                    </div>
-                    <div className="truncate text-[9px] text-muted-foreground/70">
-                      {s.items}
-                    </div>
+                    <div className={cn("text-[11px] font-semibold", active ? "text-[var(--accent)]" : "text-foreground")}>{s.name}</div>
+                    <div className="truncate text-[9px] text-muted-foreground/60">{s.items}</div>
                   </div>
-
-                  <span
-                    className={cn(
-                      "shrink-0 font-mono text-[11px] font-semibold transition-colors",
-                      active ? "text-primary" : "text-muted-foreground"
-                    )}
-                  >
-                    ¥{getScenePrice(s.id)}
-                  </span>
-
-                  <div
-                    className={cn(
-                      "flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all",
-                      active
-                        ? "border-primary bg-primary"
-                        : "border-border"
-                    )}
-                  >
+                  <span className={cn("shrink-0 font-mono text-[11px] font-bold", active ? "text-[var(--accent)]" : "text-muted-foreground")}>¥{getScenePrice(s.id)}</span>
+                  <div className={cn(
+                    "flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all",
+                    active ? "border-cyan-500 bg-cyan-500 shadow-[0_0_6px_rgba(6,182,212,0.3)]" : "border-white/10"
+                  )}>
                     {active && <Check className="h-2.5 w-2.5 text-white" />}
                   </div>
                 </motion.button>
               );
             })}
           </div>
-        </section>
+        </div>
 
-        <div className="mb-3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="mb-2.5 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Family */}
-        <section className="mb-3">
-          <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2.5 w-0.5 rounded-full bg-primary/50" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              家庭成员
-            </span>
+        <div className="mb-2.5">
+          <div className="mb-1.5 flex items-center gap-1.5 px-1">
+            <span className="h-2.5 w-0.5 rounded-full bg-[var(--accent)]/50" />
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">家庭成员</span>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 px-1">
             {FAMILY_OPTS.map((o) => (
-              <button
-                type="button"
-                key={o.v}
-                onClick={() => toggleFamily(o.v)}
+              <button key={o.v} type="button" onClick={() => toggleFamily(o.v)}
                 className={cn(
-                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
+                  "rounded-lg border px-3 py-1.5 text-[11px] font-medium transition-all duration-300",
                   family.includes(o.v)
-                    ? "border-primary/15 bg-primary/10 text-primary"
-                    : "border-border bg-muted text-muted-foreground hover:border-border/80"
+                    ? "border-cyan-500/20 bg-cyan-500/10 text-[var(--accent)] shadow-[0_0_8px_rgba(6,182,212,0.06)]"
+                    : "border-white/5 bg-white/5 text-muted-foreground hover:border-white/10 hover:text-foreground"
                 )}
-              >
-                {o.t}
-              </button>
+              >{o.t}</button>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* User type */}
-        <section>
-          <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="h-2 w-0.5 rounded-full bg-primary/50" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              装修阶段
-            </span>
+        {/* Renovation */}
+        <div>
+          <div className="mb-1.5 flex items-center gap-1.5 px-1">
+            <span className="h-2.5 w-0.5 rounded-full bg-[var(--accent)]/50" />
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">装修阶段</span>
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 px-1">
             {RENO_OPTS.map((o) => (
-              <button
-                type="button"
-                key={o.v}
-                onClick={() => setReno(reno === o.v ? "" : o.v)}
+              <button key={o.v} type="button" onClick={() => setReno(reno === o.v ? "" : o.v)}
                 className={cn(
-                  "flex items-center justify-between rounded-lg border px-3 py-1.5 text-left transition-all",
+                  "flex items-center justify-between rounded-lg border px-3 py-2 text-left transition-all duration-300",
                   reno === o.v
-                    ? "border-primary/20 bg-primary/10 shadow-sm"
-                    : "border-border hover:bg-muted/60"
+                    ? "border-cyan-500/20 bg-cyan-500/10 shadow-[0_0_8px_rgba(6,182,212,0.06)]"
+                    : "border-white/5 hover:bg-white/5"
                 )}
               >
-                <span
-                  className={cn(
-                    "text-xs font-semibold transition-colors",
-                    reno === o.v ? "text-primary" : "text-foreground"
-                  )}
-                >
-                  {o.t}
-                </span>
-                {o.tip && (
-                  <span
-                    className={cn(
-                      "text-[9px] transition-colors",
-                      reno === o.v ? "text-primary/70" : "text-muted-foreground"
-                    )}
-                  >
-                    {o.tip}
-                  </span>
-                )}
+                <span className={cn("text-[11px] font-semibold", reno === o.v ? "text-[var(--accent)]" : "text-foreground")}>{o.t}</span>
+                {o.tip && <span className={cn("text-[9px]", reno === o.v ? "text-[var(--accent)]/60" : "text-muted-foreground")}>{o.tip}</span>}
               </button>
             ))}
           </div>
-        </section>
+        </div>
       </ScrollArea>
     </motion.aside>
   );
