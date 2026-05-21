@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "米家搭配向导 — 智能家居方案配置",
+  title: "米家搭配向导 v3 — AI 驱动的全屋智能方案配置",
   description: "基于小米米家生态的智能家居设备搭配向导，一键生成全屋智能方案",
   icons: { icon: "/icon.svg" },
 };

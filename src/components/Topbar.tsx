@@ -21,7 +21,7 @@ export function Topbar({ onExport }: { onExport: () => void }) {
           Mi
         </div>
         <span className="text-sm font-bold tracking-tight">米家搭配向导</span>
-        <span className="rounded bg-muted px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground">v2.0</span>
+        <span className="rounded bg-muted px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground">v3.0</span>
       </div>
 
       <div className="flex items-center gap-2">

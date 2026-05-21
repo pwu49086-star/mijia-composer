@@ -5,9 +5,11 @@
 
 # 米家搭配向导
 
-**面向装修/刚入住用户的米家全屋智能方案配置工具。**
+**面向装修/刚入住用户的米家全屋智能方案配置工具，由 Claude Code 多 Agent 协作驱动开发。**
 
-选择生活方式 → 自动生成设备清单 → 拓扑校验 → 一键导出方案书。让用户告别"不知道该买什么设备、能不能联动、怎么安装"的选择焦虑。
+选择生活方式 → 自动生成设备清单 → 协议兼容校验 → 一键打印方案书。让用户告别"不知道该买什么设备、能不能联动、怎么安装"的选择焦虑。
+
+> 全部代码由 Claude Code Agent 生成，零人工编码。Git 历史全程包含 `Co-Authored-By: Claude Opus 4.7`。
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
